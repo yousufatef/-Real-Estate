@@ -1,3 +1,4 @@
+import { listData } from "../../lib/dummydata";
 import { MapSection } from "./_components/MapSection";
 import { PropertyCard } from "./_components/PropertyCard";
 import { SearchFilters } from "./_components/SearchFilters";
@@ -21,10 +22,33 @@ const mockProperties = [
         bedrooms: 3,
         bathrooms: 2,
         image: "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+        id: "3",
+        title: "A Cozy Cottage in the Countryside",
+        address: "123 Country Lane, London",
+        price: 1200,
+        bedrooms: 2,
+        bathrooms: 1,
+        image: "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800"
+    },
+    {
+        id: "4",
+        title: "An Awesome Apartment Near the Park! Almost too good to be true!",
+        address: "789 Oxford Street, London",
+        price: 1500,
+        bedrooms: 3,
+        bathrooms: 2,
+        image: "https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=800"
     }
 ];
 
 const List = () => {
+    const data = listData.map(item => ({
+        ...item,
+        id: String(item.id),
+    }));
+
     const handleSearch = () => {
         console.log("Searching...");
     };
@@ -49,8 +73,8 @@ const List = () => {
                         </div>
                     </div>
                     {/* Map Section */}
-                    <div className="lg:sticky lg:top-8 h-fit">
-                        <MapSection />
+                    <div className="lg:sticky lg:top-20 h-fit">
+                        <MapSection items={data} />
                     </div>
                 </div>
             </div>
